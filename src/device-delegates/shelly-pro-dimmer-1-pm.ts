@@ -4,7 +4,7 @@ import {
   ShellyProDimmer1Pm2,
 } from '@buddyshome/shellies-ds9';
 
-import { DeviceDelegate } from "./base";
+import { DeviceDelegate } from './base';
 
 /**
  * Handles Shelly Pro Dimmer 1PM devices.
@@ -21,6 +21,6 @@ DeviceDelegate.registerDelegate(
   ShellyProDimmer1PmDelegate,
   ShellyProDimmer1Pm,
   ShellyProDimmer1Pm2,
-  ShellyDimmer
+  ShellyDimmer,
 );
 

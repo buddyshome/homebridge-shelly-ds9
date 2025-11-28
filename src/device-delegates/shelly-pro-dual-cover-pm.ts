@@ -1,6 +1,6 @@
 import { ShellyProDualCoverPm } from '@buddyshome/shellies-ds9';
 
-import { DeviceDelegate } from "./base";
+import { DeviceDelegate } from './base';
 
 /**
  * Handles Shelly Pro Dual Cover PM devices.
@@ -16,6 +16,6 @@ export class ShellyProDualCoverPmDelegate extends DeviceDelegate {
 
 DeviceDelegate.registerDelegate(
   ShellyProDualCoverPmDelegate,
-  ShellyProDualCoverPm
+  ShellyProDualCoverPm,
 );
 
