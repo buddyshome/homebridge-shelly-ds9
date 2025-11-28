@@ -1,4 +1,4 @@
-import { ShellyProDualCoverPm } from "shellies-ds9";
+import { ShellyProDualCoverPm } from '@buddyshome/shellies-ds9';
 
 import { DeviceDelegate } from "./base";
 
@@ -18,3 +18,4 @@ DeviceDelegate.registerDelegate(
   ShellyProDualCoverPmDelegate,
   ShellyProDualCoverPm
 );
+

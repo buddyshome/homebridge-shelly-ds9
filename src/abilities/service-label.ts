@@ -26,3 +26,4 @@ export class ServiceLabelAbility extends Ability {
     // nothing to detach
   }
 }
+

@@ -284,3 +284,4 @@ export abstract class Ability {
     this._service = null;
   }
 }
+

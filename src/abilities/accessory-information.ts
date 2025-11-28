@@ -1,4 +1,4 @@
-import { Device } from 'shellies-ds9';
+import { Device } from '@buddyshome/shellies-ds9';
 
 import { Ability, ServiceClass } from './base';
 
@@ -30,3 +30,4 @@ export class AccessoryInformationAbility extends Ability {
     // no event handlers
   }
 }
+

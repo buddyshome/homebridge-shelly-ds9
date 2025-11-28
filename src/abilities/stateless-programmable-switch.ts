@@ -1,4 +1,4 @@
-import { Input } from 'shellies-ds9';
+import { Input } from '@buddyshome/shellies-ds9';
 
 import { Ability, ServiceClass } from './base';
 
@@ -95,3 +95,4 @@ export class StatelessProgrammableSwitchAbility extends Ability {
     this.triggerPress(ButtonPress.Long);
   }
 }
+

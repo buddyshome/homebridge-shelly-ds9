@@ -1,4 +1,4 @@
-import { ShellyPlusDimmer } from "shellies-ds9";
+import { ShellyPlusDimmer } from '@buddyshome/shellies-ds9';
 
 import { DeviceDelegate } from "./base";
 
@@ -14,3 +14,4 @@ export class ShellyPlusDimmer010Delegate extends DeviceDelegate {
 }
 
 DeviceDelegate.registerDelegate(ShellyPlusDimmer010Delegate, ShellyPlusDimmer);
+

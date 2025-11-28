@@ -2,7 +2,7 @@ import {
   ShellyDimmer,
   ShellyProDimmer1Pm,
   ShellyProDimmer1Pm2,
-} from "shellies-ds9";
+} from '@buddyshome/shellies-ds9';
 
 import { DeviceDelegate } from "./base";
 
@@ -23,3 +23,4 @@ DeviceDelegate.registerDelegate(
   ShellyProDimmer1Pm2,
   ShellyDimmer
 );
+

@@ -1,4 +1,4 @@
-import { ComponentLike, Cover, Device, Switch, Light } from 'shellies-ds9';
+import { ComponentLike, Cover, Device, Switch, Light } from '@buddyshome/shellies-ds9';
 import { PlatformAccessory } from 'homebridge';
 
 import {
@@ -336,3 +336,4 @@ export abstract class DeviceDelegate {
     this.log.info('Device removed');
   }
 }
+

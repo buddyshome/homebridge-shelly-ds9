@@ -1,5 +1,5 @@
 import { Perms } from 'homebridge';
-import { CharacteristicValue as ShelliesCharacteristicValue, Input } from 'shellies-ds9';
+import { CharacteristicValue as ShelliesCharacteristicValue, Input } from '@buddyshome/shellies-ds9';
 
 import { Ability, ServiceClass } from './base';
 
@@ -53,3 +53,4 @@ export class ReadonlySwitchAbility extends Ability {
       .updateValue(v);
   }
 }
+

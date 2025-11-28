@@ -1,4 +1,4 @@
-import { ShellyPro3 } from 'shellies-ds9';
+import { ShellyPro3 } from '@buddyshome/shellies-ds9';
 
 import { DeviceDelegate } from './base';
 
@@ -16,3 +16,4 @@ export class ShellyPro3Delegate extends DeviceDelegate {
 }
 
 DeviceDelegate.registerDelegate(ShellyPro3Delegate, ShellyPro3);
+

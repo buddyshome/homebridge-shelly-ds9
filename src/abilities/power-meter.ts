@@ -3,7 +3,7 @@ import {
   Cover,
   Switch,
   SwitchEnergyCounterAttributes,
-} from 'shellies-ds9';
+} from '@buddyshome/shellies-ds9';
 
 import { Ability, ServiceClass } from './base';
 
@@ -130,3 +130,4 @@ export class PowerMeterAbility extends Ability {
     );
   }
 }
+

@@ -1,4 +1,4 @@
-import { ShellyGen32Pm, ShellyPlus2Pm, ShellyPlus2PmRev1 } from "shellies-ds9";
+import { ShellyGen32Pm, ShellyPlus2Pm, ShellyPlus2PmRev1 } from '@buddyshome/shellies-ds9';
 
 import { DeviceDelegate } from "./base";
 
@@ -23,3 +23,4 @@ DeviceDelegate.registerDelegate(
   ShellyPlus2PmRev1,
   ShellyGen32Pm
 );
+

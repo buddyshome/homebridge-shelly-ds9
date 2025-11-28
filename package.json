@@ -1,15 +1,18 @@
 {
-  "name": "homebridge-shelly-ds9",
-  "version": "1.5.8",
+  "name": "@buddyshome/homebridge-shelly-ds9",
+  "version": "1.0.1",
   "description": "Homebridge plugin for the next generation of Shelly devices",
   "main": "dist/index.js",
   "scripts": {
     "build": "rimraf ./dist && tsc",
     "lint": "eslint ./src --ext .ts,.js --max-warnings=0",
     "test": "jest",
+    "start": "npm run build && homebridge -I -D ",
     "preversion": "npm run build && npm run lint",
     "postversion": "git push && git push --tags",
-    "pretty": "prettier --write \"./**/*.{js,jsx,json}\""
+    "pretty": "prettier --write \"./**/*.{js,jsx,json}\"",
+    "link": "npm unlink node-shellies-ds9 && npm link senec-battery",
+    "unlink": "npm unlink senec-battery && npm install senec-battery@latest --save"
   },
   "engines": {
     "node": ">=18.15.0",
@@ -17,7 +20,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/cubi1337/homebridge-shelly-ds9.git"
+    "url": "git@github.com:buddyshome/homebridge-shelly-ds9.git"
   },
   "keywords": [
     "homebridge",
@@ -27,12 +30,12 @@
   "author": "Alexander Rydén",
   "license": "GPL-3.0",
   "bugs": {
-    "url": "https://github.com/cubi1337/homebridge-shelly-ds9/issues"
+    "url": "https://github.com/buddyshome/homebridge-shelly-ds9#/issues"
   },
-  "homepage": "https://github.com/cubi1337/homebridge-shelly-ds9#readme",
+  "homepage": "https://github.com/buddyshome/homebridge-shelly-ds9##readme",
   "funding": {
     "type": "kofi",
-    "url": "https://ko-fi.com/cubi1337"
+    "url": "https://github.com/buddyshome/homebridge-shelly-ds9#"
   },
   "devDependencies": {
     "@types/jest": "^29.5.11",
@@ -50,6 +53,6 @@
     "prettier": "^3.1.0"
   },
   "dependencies": {
-    "shellies-ds9": "^1.1.9"
+    "@buddyshome/shellies-ds9": "^1.2.0"
   }
 }
