@@ -2,7 +2,8 @@ import {
   ShellyPro2,
   ShellyPro2Rev1,
   ShellyPro2Rev2,
-} from 'shellies-ds9';
+  ShellyPro2EU,
+} from '@buddyshome/shellies-ds9';
 
 import { DeviceDelegate } from './base';
 
@@ -23,4 +24,6 @@ DeviceDelegate.registerDelegate(
   ShellyPro2,
   ShellyPro2Rev1,
   ShellyPro2Rev2,
+  ShellyPro2EU,
 );
+

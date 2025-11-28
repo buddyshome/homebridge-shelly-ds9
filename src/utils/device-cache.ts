@@ -2,7 +2,7 @@ import { Logger } from 'homebridge';
 import { promises as fs } from 'fs';
 import { resolve } from 'path';
 
-import { Device, DeviceId, WebSocketRpcHandler } from 'shellies-ds9';
+import { Device, DeviceId, WebSocketRpcHandler } from '@buddyshome/shellies-ds9';
 
 const FILENAME = '.shelly-ng.json';
 
@@ -185,3 +185,4 @@ export class DeviceCache {
     return this.devices.values();
   }
 }
+

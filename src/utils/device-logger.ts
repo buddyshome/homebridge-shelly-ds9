@@ -1,4 +1,4 @@
-import { Device } from 'shellies-ds9';
+import { Device } from '@buddyshome/shellies-ds9';
 import { Logger, LogLevel } from 'homebridge';
 
 /**
@@ -40,3 +40,4 @@ export class DeviceLogger {
     );
   }
 }
+

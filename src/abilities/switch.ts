@@ -1,5 +1,5 @@
 import { CharacteristicValue } from 'homebridge';
-import { CharacteristicValue as ShelliesCharacteristicValue, Switch } from 'shellies-ds9';
+import { CharacteristicValue as ShelliesCharacteristicValue, Switch } from '@buddyshome/shellies-ds9';
 
 import { Ability, ServiceClass } from './base';
 
@@ -70,3 +70,4 @@ export class SwitchAbility extends Ability {
       .updateValue(value as boolean);
   }
 }
+

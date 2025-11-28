@@ -93,3 +93,4 @@ export const createCharacteristics = (api: API): CustomCharacteristics => {
     Voltage,
   };
 };
+

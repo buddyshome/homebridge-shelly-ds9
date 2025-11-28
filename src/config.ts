@@ -1,6 +1,6 @@
 import { PlatformConfig } from 'homebridge';
 
-import { DeviceId } from 'shellies-ds9';
+import { DeviceId } from '@buddyshome/shellies-ds9';
 
 export interface MdnsOptions {
   /**
@@ -186,3 +186,4 @@ export class PlatformOptions {
     return this.deviceOptions.get(deviceId) || DEFAULT_DEVICE_OPTIONS;
   }
 }
+

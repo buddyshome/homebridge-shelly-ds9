@@ -3,7 +3,7 @@ import {
   Cover,
   Switch,
   SwitchEnergyCounterAttributes,
-} from 'shellies-ds9';
+} from '@buddyshome/shellies-ds9';
 
 import { Ability, ServiceClass } from './base';
 
@@ -91,10 +91,10 @@ export class PowerMeterAbility extends Ability {
      * Handles changes to the 'apower' property. HomeKit does not support negative values for the 'Current Consumption' characteristic.
      * For the use case of this plugin, knowing the negative voltage is not necessary, so we ensure that the value is never negative.
      */
-    const positiveValue = Math.max(0, value as number); 
+    const positiveValue = Math.max(0, value as number);
     this.service.updateCharacteristic(
-        this.customCharacteristics.CurrentConsumption,
-        positiveValue,
+      this.customCharacteristics.CurrentConsumption,
+      positiveValue,
     );
   }
 
@@ -130,3 +130,4 @@ export class PowerMeterAbility extends Ability {
     );
   }
 }
+
