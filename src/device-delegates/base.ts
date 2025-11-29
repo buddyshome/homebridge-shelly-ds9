@@ -269,6 +269,7 @@ export abstract class DeviceDelegate {
   protected handleConnect() {
     this.log.info('Device connected');
     this.connected = true;
+
   }
 
   /**

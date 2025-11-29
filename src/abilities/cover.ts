@@ -11,6 +11,11 @@ const names = {
 
 export class CoverAbility extends Ability {
   /**
+   * Flag to track if the ability is fully initialized and active.
+   */
+  private _isInitialized = false;
+
+  /**
    * @param component - The cover component to control.
    * @param type - The type of cover.
    */
@@ -81,16 +86,32 @@ export class CoverAbility extends Ability {
     // listen for commands from HomeKit
     this.service
       .getCharacteristic(this.Characteristic.TargetPosition)
-      .onSet(this.targetPositionSetHandler.bind(this));
+      .onSet(this.targetPositionSetHandler.bind(this))
+      .onGet(this.targetPositionGetHandler.bind(this));
+
+    // add onGet handlers for state retrieval
+    this.service
+      .getCharacteristic(this.Characteristic.PositionState)
+      .onGet(this.positionStateGetHandler.bind(this));
+
+    this.service
+      .getCharacteristic(this.Characteristic.CurrentPosition)
+      .onGet(this.currentPositionGetHandler.bind(this));
 
     // listen for updates from the device
     this.component
       .on('change:state', this.stateChangeHandler, this)
       .on('change:current_pos', this.currentPosChangeHandler, this)
       .on('change:target_pos', this.targetPosChangeHandler, this);
+
+    // mark as initialized after all setup is complete
+    this._isInitialized = true;
   }
 
   detach() {
+    // mark as no longer initialized to prevent race conditions with event handlers
+    this._isInitialized = false;
+
     this.component
       .off('change:state', this.stateChangeHandler, this)
       .off('change:current_pos', this.currentPosChangeHandler, this)
@@ -105,6 +126,12 @@ export class CoverAbility extends Ability {
       return;
     }
 
+    // check if the device is connected before sending commands
+    if (!this.component.device.rpcHandler.connected) {
+      this.log.error('Cannot set target position: device is not connected');
+      throw this.api.hap.HAPStatus.SERVICE_COMMUNICATION_FAILURE;
+    }
+
     try {
       await this.component.goToPosition(value as number);
     } catch (e) {
@@ -117,9 +144,34 @@ export class CoverAbility extends Ability {
   }
 
   /**
+   * Handles requests for the current value of the TargetPosition characteristic.
+   */
+  protected targetPositionGetHandler(): CharacteristicValue {
+    return this.targetPosition;
+  }
+
+  /**
+   * Handles requests for the current value of the PositionState characteristic.
+   */
+  protected positionStateGetHandler(): CharacteristicValue {
+    return this.positionState;
+  }
+
+  /**
+   * Handles requests for the current value of the CurrentPosition characteristic.
+   */
+  protected currentPositionGetHandler(): CharacteristicValue {
+    return this.currentPosition;
+  }
+
+  /**
    * Handles changes to the `state` property.
    */
   protected stateChangeHandler() {
+    if (!this._isInitialized) {
+      return;
+    }
+
     this.log.debug(
       `${this.component.id} state changed to ${this.positionState}`,
       {
@@ -153,6 +205,10 @@ export class CoverAbility extends Ability {
    * Handles changes to the `current_pos` property.
    */
   protected currentPosChangeHandler() {
+    if (!this._isInitialized) {
+      return;
+    }
+
     this.log.debug(
       `${this.component.id} position changed to ${this.currentPosition}`,
       {
@@ -164,15 +220,23 @@ export class CoverAbility extends Ability {
 
     // Shelly does not update the target position when it is triggered with a physical switch.
     // If we don't change the target position, HomeKit waits for the original position forever.
-    this.service
-      .getCharacteristic(this.Characteristic.TargetPosition)
-      .updateValue(this.currentPosition);
+    // Only update the target when the cover has stopped and target doesn't match current position.
+    if (this.positionState === this.Characteristic.PositionState.STOPPED &&
+        this.targetPosition !== this.currentPosition) {
+      this.service
+        .getCharacteristic(this.Characteristic.TargetPosition)
+        .updateValue(this.currentPosition);
+    }
   }
 
   /**
    * Handles changes to the `target_pos` property.
    */
   protected targetPosChangeHandler() {
+    if (!this._isInitialized) {
+      return;
+    }
+
     this.log.debug(
       `${this.component.id} target position changed to ${this.targetPosition}`,
       {
