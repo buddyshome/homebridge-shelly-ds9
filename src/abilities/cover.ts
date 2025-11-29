@@ -1,5 +1,5 @@
 import { CharacteristicValue } from 'homebridge';
-import { Cover } from 'shellies-ds9';
+import { Cover } from '@buddyshome/shellies-ds9';
 
 import { Ability, ServiceClass } from './base';
 
@@ -116,14 +116,6 @@ export class CoverAbility extends Ability {
       .off('change:state', this.stateChangeHandler, this)
       .off('change:current_pos', this.currentPosChangeHandler, this)
       .off('change:target_pos', this.targetPosChangeHandler, this);
-  }
-
-  /**
-   * Refreshes the state of the cover after device reconnection.
-   */
-  refreshState() {
-    this.log.debug(`Refreshing cover ${this.component.id} state after reconnection`);
-    this.updateStates();
   }
 
   /**

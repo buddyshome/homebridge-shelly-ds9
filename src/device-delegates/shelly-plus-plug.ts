@@ -3,7 +3,7 @@ import {
   ShellyPlusPlugEu,
   ShellyPlusPlugIt,
   ShellyPlusPlugUk,
-} from 'shellies-ds9';
+} from '@buddyshome/shellies-ds9';
 
 import { DeviceDelegate } from './base';
 
