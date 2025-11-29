@@ -6,6 +6,7 @@ import {
   ShellyPlus1MiniV3,
   ShellyPlugSGen3EU,
 } from '@buddyshome/shellies-ds9';
+} from 'shellies-ds9';
 
 import { DeviceDelegate } from './base';
 
@@ -27,6 +28,5 @@ DeviceDelegate.registerDelegate(
   ShellyPlus1V3,
   ShellyPlus1Mini,
   ShellyPlus1MiniV3,
-  ShellyPlugSGen3EU,
 );
 

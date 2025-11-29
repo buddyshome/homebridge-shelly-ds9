@@ -270,6 +270,16 @@ export abstract class Ability {
   abstract detach();
 
   /**
+   * Refreshes the state of this ability.
+   * This method is called when the device reconnects to ensure HomeKit has the latest state.
+   * Subclasses can override this method to implement custom state refresh logic.
+   */
+  refreshState() {
+    // default implementation does nothing
+    // subclasses should override this method to update their characteristics
+  }
+
+  /**
    * Removes all event listeners and all references to the platform accessory.
    * This method is called by the parent accessory every time it becomes inactive.
    * Note that this method doesn't remove the service from the platform accessory as it is assumed that

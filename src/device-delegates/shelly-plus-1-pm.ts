@@ -4,7 +4,7 @@ import {
   ShellyPlus1PmV3,
   ShellyPlus1PmMini,
   ShellyPlus1PmMiniV3,
-} from '@buddyshome/shellies-ds9';
+} from 'shellies-ds9';
 
 import { DeviceDelegate } from './base';
 

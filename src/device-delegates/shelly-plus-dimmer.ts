@@ -1,4 +1,4 @@
-import { ShellyPlusDimmer } from '@buddyshome/shellies-ds9';
+import { ShellyPlusDimmer } from 'shellies-ds9';
 
 import { DeviceDelegate } from './base';
 
