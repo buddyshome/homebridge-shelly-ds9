@@ -89,14 +89,14 @@ export class CoverAbility extends Ability {
       .onSet(this.targetPositionSetHandler.bind(this))
       .onGet(this.targetPositionGetHandler.bind(this));
 
+    this.service
+      .getCharacteristic(this.Characteristic.CurrentPosition)
+      .onGet(this.currentPositionGetHandler.bind(this));
+
     // add onGet handlers for state retrieval
     this.service
       .getCharacteristic(this.Characteristic.PositionState)
       .onGet(this.positionStateGetHandler.bind(this));
-
-    this.service
-      .getCharacteristic(this.Characteristic.CurrentPosition)
-      .onGet(this.currentPositionGetHandler.bind(this));
 
     // listen for updates from the device
     this.component
