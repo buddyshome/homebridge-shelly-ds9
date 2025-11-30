@@ -81,7 +81,17 @@ export class CoverAbility extends Ability {
     // listen for commands from HomeKit
     this.service
       .getCharacteristic(this.Characteristic.TargetPosition)
-      .onSet(this.targetPositionSetHandler.bind(this));
+      .onSet(this.targetPositionSetHandler.bind(this))
+      .onGet(this.targetPositionGetHandler.bind(this));
+
+    this.service
+      .getCharacteristic(this.Characteristic.CurrentPosition)
+      .onGet(this.currentPositionGetHandler.bind(this));
+
+    // add onGet handlers for state retrieval
+    this.service
+      .getCharacteristic(this.Characteristic.PositionState)
+      .onGet(this.positionStateGetHandler.bind(this));
 
     // listen for updates from the device
     this.component
@@ -114,6 +124,27 @@ export class CoverAbility extends Ability {
       );
       throw this.api.hap.HAPStatus.SERVICE_COMMUNICATION_FAILURE;
     }
+  }
+
+  /**
+   * Handles requests for the current value of the TargetPosition characteristic.
+   */
+  protected targetPositionGetHandler(): CharacteristicValue {
+    return this.targetPosition;
+  }
+
+  /**
+   * Handles requests for the current value of the PositionState characteristic.
+   */
+  protected positionStateGetHandler(): CharacteristicValue {
+    return this.positionState;
+  }
+
+  /**
+   * Handles requests for the current value of the CurrentPosition characteristic.
+   */
+  protected currentPositionGetHandler(): CharacteristicValue {
+    return this.currentPosition;
   }
 
   /**
