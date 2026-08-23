@@ -11,7 +11,8 @@
     "strict": true,
     "esModuleInterop": true,
     "noImplicitAny": false,
-    "experimentalDecorators": true
+    "experimentalDecorators": true,
+    "skipLibCheck": true
   },
   "include": ["src/"],
   "exclude": ["**/*.spec.ts"]
