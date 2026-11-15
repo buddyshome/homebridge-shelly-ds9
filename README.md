@@ -2,6 +2,9 @@
 
 # homebridge-shelly-ds9
 
+> [!WARNING]
+> **This project is no longer maintained.** No further updates, bug fixes or support will be provided. Issues and pull requests may not be answered. Feel free to fork it if you need changes.
+
 [![npm-version](https://badgen.net/npm/v/homebridge-shelly-ds9)](https://www.npmjs.com/package/homebridge-shelly-ds9)
 
 [Homebridge](https://homebridge.io) plugin for [Shelly](https://shelly.cloud),
